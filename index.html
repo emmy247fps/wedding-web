@@ -386,9 +386,21 @@ footer .foot-fine{ font-size:11px; letter-spacing:0.1em; color:rgba(242,231,216,
 .editorial-copy .place-addr{ font-family:var(--serif-soft); font-size:14.5px; color:var(--ink-soft); margin-bottom:14px; }
 .editorial-copy p.place-desc{ font-size:15px; line-height:1.75; color:var(--ink-soft); margin-bottom:20px; }
 .editorial-actions{ display:flex; gap:12px; flex-wrap:wrap; }
+/* Distinct photographic tones per location type, layered over the shared .ph pattern */
+.editorial-media .ph.tone-a{ background: linear-gradient(155deg, #8a2c3c 0%, #6e1f2b 50%, #4e1620 100%); }
+.editorial-media .ph.tone-b{ background: linear-gradient(155deg, #c9a24b 0%, #a9843a 50%, #8a6b2c 100%); }
+.editorial-media .ph.tone-c{ background: linear-gradient(155deg, #d98c9b 0%, #b9677a 50%, #93475a 100%); }
+.editorial-media .ph.tone-d{ background: linear-gradient(155deg, #6f8a5c 0%, #4f6b40 50%, #37502c 100%); }
+.editorial-media .ph.tone-e{ background: linear-gradient(155deg, #5c7d94 0%, #3f5f76 50%, #2a4456 100%); }
 @media (max-width:820px){
   .editorial-row{ grid-template-columns:1fr; gap:24px; margin-bottom:48px; }
   .editorial-row:nth-child(even){ direction:ltr; }
+  .editorial-media .ph{ aspect-ratio:16/10; }
+}
+@media (max-width:480px){
+  .editorial-copy h4{ font-size:21px; }
+  .editorial-actions{ flex-direction:column; }
+  .editorial-actions .btn-sm{ width:100%; text-align:center; justify-content:center; min-height:44px; }
 }
 
 /* Beyond Mansfield mini-cards */
@@ -399,9 +411,14 @@ footer .foot-fine{ font-size:11px; letter-spacing:0.1em; color:rgba(242,231,216,
 .beyond-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:20px; max-width:820px; margin:0 auto; }
 .beyond-card{ background:var(--white); border:1px solid var(--cream); border-radius:14px; padding:28px 20px; box-shadow:0 12px 28px -18px rgba(56,44,40,0.22); transition:transform 0.35s ease, box-shadow 0.35s ease; }
 .beyond-card:hover{ transform:translateY(-4px); box-shadow:0 18px 36px -18px rgba(56,44,40,0.3); }
+.beyond-icon{ color:var(--gold); margin-bottom:10px; display:flex; justify-content:center; }
 .beyond-card h5{ font-family:var(--serif); font-size:16.5px; color:var(--ink); margin-bottom:6px; }
 .beyond-card p{ font-size:13px; color:var(--ink-soft); line-height:1.6; }
 .beyond-note{ margin-top:30px; font-size:12.5px; letter-spacing:0.04em; color:var(--gold); font-style:italic; }
+@media (max-width:480px){
+  .beyond-grid{ grid-template-columns:1fr; }
+  .beyond-block{ margin-top:50px; padding-top:40px; }
+}
 
 /* ============ FOREVER FUND (gift card + copy buttons) ============ */
 .fund-card .fund-msg p{ font-family:var(--serif-soft); font-size:18px; line-height:1.85; color:var(--ink-soft); margin-bottom:16px; }
@@ -416,14 +433,15 @@ footer .foot-fine{ font-size:11px; letter-spacing:0.1em; color:rgba(242,231,216,
 }
 .registry-card h4{ font-family:var(--serif); font-size:24px; color:var(--burgundy-deep); text-align:center; position:relative; }
 .registry-card .registry-sub{ display:block; text-align:center; font-size:11px; letter-spacing:0.24em; text-transform:uppercase; color:var(--gold); margin-top:6px; margin-bottom:30px; position:relative; }
-.gift-options{ display:grid; grid-template-columns:1fr 1fr; gap:22px; position:relative; }
+.gift-options{ display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:22px; position:relative; }
 .gift-option{
   border:1px solid var(--cream); border-radius:14px; padding:26px 22px; text-align:center; background:var(--ivory);
   transition:box-shadow 0.3s ease, transform 0.3s ease;
 }
 .gift-option:hover{ box-shadow:0 14px 30px -18px rgba(56,44,40,0.25); transform:translateY(-2px); }
 .gift-option .gift-label{ font-size:11px; letter-spacing:0.2em; text-transform:uppercase; color:var(--gold); margin-bottom:10px; }
-.gift-option .gift-value{ font-family:var(--serif); font-size:22px; color:var(--ink); margin-bottom:18px; letter-spacing:0.02em; }
+.gift-option .gift-value{ font-family:var(--serif); font-size:22px; color:var(--ink); margin-bottom:18px; letter-spacing:0.02em; overflow-wrap:anywhere; word-break:break-word; }
+.gift-option{ min-width:0; }
 .copy-btn{
   display:inline-flex; align-items:center; justify-content:center; gap:8px; min-height:44px; padding:0 26px;
   border-radius:999px; font-size:11.5px; letter-spacing:0.16em; text-transform:uppercase; font-weight:500;
@@ -676,7 +694,6 @@ footer .foot-fine{ font-size:11px; letter-spacing:0.1em; color:rgba(242,231,216,
     <div class="foot-social" id="footSocial"></div>
     <div class="foot-rule"></div>
     <div class="foot-fine">#KD26</div>
-    <div class="foot-fine">created by emmy</div>
   </div>
 </footer>
 
@@ -795,22 +812,22 @@ document.addEventListener('keydown', (e) => {
 // All Forever Fund + Things To Do content lives in this one object.
 const weddingInfo = {
   zelle: 'Kunleowaniyi@gmail.com',
-  cashApp: '$KandD26',
+  cashApp: '$KunleOwaniyi',
   restaurants: [
-    { name:"Meehan's Chophouse", addr:'101 S Main St, Mansfield, TX 76063', desc:'An upscale steak and seafood restaurant in the heart of Historic Downtown Mansfield — perfect for a special dinner or date night.', website:'' },
-    { name:'Mister O1 Extraordinary Pizza', addr:'1520 E Debbie Ln #102, Mansfield, TX 76063', desc:'A fun and casual option for artisan-style pizza, salads, and Italian-inspired dishes.', website:'' },
-    { name:'Our Place Restaurant', addr:'915 W Debbie Ln, Mansfield, TX 76063', desc:'A cozy local favorite for breakfast and lunch, serving classic American comfort food and homemade favorites.', website:'' },
+    { name:"Meehan's Chophouse", addr:'101 S Main St, Mansfield, TX 76063', desc:'An upscale steak and seafood restaurant in the heart of Historic Downtown Mansfield — perfect for a special dinner or date night.', website:'', icon:'steak', tone:'tone-a' },
+    { name:'Mister O1 Extraordinary Pizza', addr:'1520 E Debbie Ln #102, Mansfield, TX 76063', desc:'A fun and casual option for artisan-style pizza, salads, and Italian-inspired dishes.', website:'', icon:'pizza', tone:'tone-b' },
+    { name:'Our Place Restaurant', addr:'915 W Debbie Ln, Mansfield, TX 76063', desc:'A cozy local favorite for breakfast and lunch, serving classic American comfort food and homemade favorites.', website:'', icon:'coffee', tone:'tone-c' },
   ],
   activities: [
-    { name:'Elmer W. Oliver Nature Park', addr:'1650 Matlock Rd, Mansfield, TX 76063', desc:"Take a peaceful break from the wedding festivities and explore Mansfield's beautiful nature park, featuring trails, ponds, wildlife, and outdoor recreation.", actionLabel:'Get Directions' },
-    { name:'Historic Downtown Mansfield', addr:'', desc:'Explore the charm of Historic Downtown Mansfield with local shops, restaurants, historic buildings, and entertainment.', actionLabel:'Explore Downtown' },
-    { name:'Joe Pool Lake', addr:'', desc:'Enjoy the outdoors at Joe Pool Lake with beautiful scenery, boating, fishing, picnicking, and relaxing by the water.', actionLabel:'Get Directions' },
-    { name:'Farr Best Theater', addr:'109 N Main St, Mansfield, TX 76063', desc:"Visit one of Mansfield's historic landmarks and enjoy live entertainment, performances, movies, and community events.", actionLabel:'Get Directions' },
+    { name:'Elmer W. Oliver Nature Park', addr:'1650 Matlock Rd, Mansfield, TX 76063', desc:"Take a peaceful break from the wedding festivities and explore Mansfield's beautiful nature park, featuring trails, ponds, wildlife, and outdoor recreation.", actionLabel:'Get Directions', icon:'leaf', tone:'tone-d' },
+    { name:'Historic Downtown Mansfield', addr:'', desc:'Explore the charm of Historic Downtown Mansfield with local shops, restaurants, historic buildings, and entertainment.', actionLabel:'Explore Downtown', icon:'building', tone:'tone-a' },
+    { name:'Joe Pool Lake', addr:'', desc:'Enjoy the outdoors at Joe Pool Lake with beautiful scenery, boating, fishing, picnicking, and relaxing by the water.', actionLabel:'Get Directions', icon:'wave', tone:'tone-e' },
+    { name:'Farr Best Theater', addr:'109 N Main St, Mansfield, TX 76063', desc:"Visit one of Mansfield's historic landmarks and enjoy live entertainment, performances, movies, and community events.", actionLabel:'Get Directions', icon:'theater', tone:'tone-b' },
   ],
   dfwAttractions: [
-    { name:'AT&T Stadium', desc:'Home of the Dallas Cowboys.' },
-    { name:'Globe Life Field', desc:'Home of the Texas Rangers.' },
-    { name:'Six Flags Over Texas', desc:'A major amusement park with rides and attractions for the whole family.' },
+    { name:'AT&T Stadium', desc:'Home of the Dallas Cowboys.', icon:'stadium' },
+    { name:'Globe Life Field', desc:'Home of the Texas Rangers.', icon:'baseball' },
+    { name:'Six Flags Over Texas', desc:'A major amusement park with rides and attractions for the whole family.', icon:'coaster' },
   ],
 };
 
@@ -883,14 +900,26 @@ travelData.forEach(t => {
 });
 
 /* ============ THINGS TO DO — editorial rows (RestaurantCard / ActivityCard) ============ */
-function placeIcon(){
-  return `<svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M12 21s-7-6.4-7-11.5A7 7 0 0112 2a7 7 0 017 7.5C19 14.6 12 21 12 21z" stroke="currentColor" stroke-width="1.3"/><circle cx="12" cy="9.5" r="2.4" stroke="currentColor" stroke-width="1.3"/></svg>`;
+function placeIcon(name){
+  const icons = {
+    steak: `<svg width="30" height="30" viewBox="0 0 24 24" fill="none"><path d="M7 3v6a3 3 0 003 3v9M17 3v6a3 3 0 01-3 3M12 12v9" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>`,
+    pizza: `<svg width="30" height="30" viewBox="0 0 24 24" fill="none"><path d="M2 6l10 15L22 6a20 20 0 00-20 0z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/><circle cx="10" cy="10" r="0.9" fill="currentColor"/><circle cx="14" cy="12" r="0.9" fill="currentColor"/><circle cx="11" cy="14.5" r="0.9" fill="currentColor"/></svg>`,
+    coffee: `<svg width="30" height="30" viewBox="0 0 24 24" fill="none"><path d="M4 8h13v5a5 5 0 01-5 5H9a5 5 0 01-5-5V8z" stroke="currentColor" stroke-width="1.3"/><path d="M17 9h1.5a2.5 2.5 0 010 5H17" stroke="currentColor" stroke-width="1.3"/><path d="M8 3.5c0 1-1 1-1 2M12 3.5c0 1-1 1-1 2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>`,
+    leaf: `<svg width="30" height="30" viewBox="0 0 24 24" fill="none"><path d="M5 19C5 10 11 4 20 4c0 9-6 15-15 15z" stroke="currentColor" stroke-width="1.3"/><path d="M6 18C10 14 13 11 18 6" stroke="currentColor" stroke-width="1.1"/></svg>`,
+    building: `<svg width="30" height="30" viewBox="0 0 24 24" fill="none"><path d="M4 21V7l6-4 6 4v14M4 21h16M9 21v-5h4v5M9 11h1M9 8h1M14 11h1M14 8h1" stroke="currentColor" stroke-width="1.2"/></svg>`,
+    wave: `<svg width="30" height="30" viewBox="0 0 24 24" fill="none"><path d="M2 16c2-2 4-2 6 0s4 2 6 0 4-2 6 0M2 20c2-2 4-2 6 0s4 2 6 0 4-2 6 0" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><circle cx="12" cy="7" r="3.4" stroke="currentColor" stroke-width="1.3"/></svg>`,
+    theater: `<svg width="30" height="30" viewBox="0 0 24 24" fill="none"><path d="M8 4a4 4 0 018 0c0 2-1.5 2.5-1.5 4.5 0 1.5 1 1.8 1 3.2A2.3 2.3 0 0113 14a2.3 2.3 0 01-2.5-2.3c0-1.4 1-1.7 1-3.2C11.5 6.5 8 6 8 4z" stroke="currentColor" stroke-width="1.1"/><path d="M6 14c0 4 3 7 6 7s6-3 6-7" stroke="currentColor" stroke-width="1.2"/></svg>`,
+    stadium: `<svg width="30" height="30" viewBox="0 0 24 24" fill="none"><ellipse cx="12" cy="12" rx="10" ry="6" stroke="currentColor" stroke-width="1.2"/><ellipse cx="12" cy="12" rx="5.5" ry="3" stroke="currentColor" stroke-width="1.1"/></svg>`,
+    baseball: `<svg width="30" height="30" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.2"/><path d="M6 6c2 2 2 10 0 12M18 6c-2 2-2 10 0 12" stroke="currentColor" stroke-width="1"/></svg>`,
+    coaster: `<svg width="30" height="30" viewBox="0 0 24 24" fill="none"><path d="M2 18c2-4 3-8 5-8s2 5 4 5 2-9 5-9 2 6 4 6 1-3 2-3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><circle cx="6" cy="19" r="1.3" fill="currentColor"/><circle cx="16" cy="19" r="1.3" fill="currentColor"/></svg>`,
+  };
+  return icons[name] || icons.leaf;
 }
 function RestaurantCard(r){
   const mapHref = 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(r.name + ' ' + r.addr);
   return `
     <div class="editorial-row reveal">
-      <div class="editorial-media"><div class="ph"><div class="ph-tag">${placeIcon()}<small>${r.name}</small></div></div></div>
+      <div class="editorial-media"><div class="ph ${r.tone || ''}"><div class="ph-tag">${placeIcon(r.icon)}<small>${r.name}</small></div></div></div>
       <div class="editorial-copy">
         <span class="place-eyebrow">Eat &amp; Drink</span>
         <h4>${r.name}</h4>
@@ -907,7 +936,7 @@ function ActivityCard(a){
   const mapHref = 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(a.name + (a.addr ? ' ' + a.addr : ' Mansfield TX'));
   return `
     <div class="editorial-row reveal">
-      <div class="editorial-media"><div class="ph"><div class="ph-tag">${placeIcon()}<small>${a.name}</small></div></div></div>
+      <div class="editorial-media"><div class="ph ${a.tone || ''}"><div class="ph-tag">${placeIcon(a.icon)}<small>${a.name}</small></div></div></div>
       <div class="editorial-copy">
         <span class="place-eyebrow">Explore &amp; Fun</span>
         <h4>${a.name}</h4>
@@ -923,7 +952,7 @@ document.getElementById('restaurantRows').innerHTML = weddingInfo.restaurants.ma
 document.getElementById('activityRows').innerHTML = weddingInfo.activities.map(ActivityCard).join('');
 
 function DFWCard(d){
-  return `<div class="beyond-card"><h5>${d.name}</h5><p>${d.desc}</p></div>`;
+  return `<div class="beyond-card"><div class="beyond-icon">${placeIcon(d.icon)}</div><h5>${d.name}</h5><p>${d.desc}</p></div>`;
 }
 document.getElementById('beyondGrid').innerHTML = weddingInfo.dfwAttractions.map(DFWCard).join('');
 
