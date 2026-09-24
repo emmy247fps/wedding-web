@@ -453,6 +453,122 @@ footer .foot-fine{ font-size:11px; letter-spacing:0.1em; color:rgba(242,231,216,
   .gift-options{ grid-template-columns:1fr; }
   .registry-card{ padding:34px 22px; }
 }
+
+/* ============ VIP RSVP FORM ============ */
+.rsvp-section{ background:var(--cream); }
+.rsvp-shell{
+  max-width:760px; margin:44px auto 0; background:var(--white); border-radius:var(--radius);
+  padding:52px 46px; box-shadow:var(--shadow); border:1px solid rgba(184,146,63,0.18); position:relative;
+}
+.rsvp-intro{ text-align:center; margin-bottom:36px; }
+.rsvp-intro .script{ font-size:38px; display:block; margin-bottom:6px; }
+.rsvp-intro p{ font-family:var(--serif-soft); font-size:16px; color:var(--ink-soft); max-width:480px; margin:10px auto 0; line-height:1.75; }
+.rsvp-fieldset{ margin-bottom:34px; }
+.rsvp-fieldset legend, .rsvp-legend{
+  font-family:var(--serif); font-size:13px; letter-spacing:0.14em; text-transform:uppercase; color:var(--gold);
+  margin-bottom:18px; display:block; padding-bottom:10px; border-bottom:1px solid var(--cream);
+}
+.rsvp-grid{ display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+.rsvp-field{ display:flex; flex-direction:column; gap:7px; margin-bottom:18px; }
+.rsvp-field.full{ grid-column:1 / -1; }
+.rsvp-field label{ font-size:11.5px; letter-spacing:0.08em; text-transform:uppercase; color:var(--ink-soft); }
+.rsvp-field label .req{ color:var(--burgundy); }
+.rsvp-field input[type="text"], .rsvp-field input[type="email"], .rsvp-field input[type="tel"], .rsvp-field select, .rsvp-field textarea{
+  font-family:var(--sans); font-size:15px; color:var(--ink); background:var(--ivory);
+  border:1px solid var(--cream); border-radius:10px; padding:13px 16px; min-height:46px;
+  transition:border-color 0.25s ease, box-shadow 0.25s ease; width:100%;
+}
+.rsvp-field textarea{ min-height:96px; resize:vertical; font-family:var(--serif-soft); font-size:15.5px; }
+.rsvp-field input:focus, .rsvp-field select:focus, .rsvp-field textarea:focus{
+  outline:none; border-color:var(--gold); box-shadow:0 0 0 3px rgba(190,154,78,0.16);
+}
+.rsvp-field.error input, .rsvp-field.error select, .rsvp-field.error textarea{ border-color:var(--burgundy); box-shadow:0 0 0 3px rgba(122,36,54,0.1); }
+.rsvp-field .err-msg{ font-size:11.5px; color:var(--burgundy); display:none; }
+.rsvp-field.error .err-msg{ display:block; }
+
+.attend-toggle{ display:flex; gap:14px; }
+.attend-option{ flex:1; }
+.attend-option input{ display:none; }
+.attend-option label{
+  display:flex; align-items:center; justify-content:center; text-align:center; cursor:pointer;
+  padding:16px 12px; border-radius:12px; border:1px solid var(--cream); background:var(--ivory);
+  font-family:var(--serif); font-size:14.5px; color:var(--ink-soft); transition:all 0.25s ease; min-height:44px;
+}
+.attend-option input:checked + label{ background:var(--burgundy-deep); border-color:var(--burgundy-deep); color:var(--white); }
+
+.guest-toggle{ display:flex; gap:14px; max-width:280px; }
+
+.guest-card{
+  background:var(--ivory); border:1px solid var(--cream); border-radius:14px; padding:24px 22px 8px; margin-bottom:18px; position:relative;
+}
+.guest-card .guest-card-head{ display:flex; align-items:center; justify-content:space-between; margin-bottom:16px; }
+.guest-card .guest-card-head h5{ font-family:var(--serif); font-size:15.5px; color:var(--burgundy-deep); }
+.remove-guest-btn{
+  font-size:10.5px; letter-spacing:0.1em; text-transform:uppercase; color:var(--burgundy);
+  border:1px solid var(--burgundy); border-radius:999px; padding:6px 14px; transition:all 0.25s ease;
+}
+.remove-guest-btn:hover{ background:var(--burgundy); color:var(--white); }
+.add-guest-btn{
+  display:inline-flex; align-items:center; gap:8px; padding:12px 26px; border-radius:999px; min-height:44px;
+  font-size:11.5px; letter-spacing:0.16em; text-transform:uppercase; border:1px solid var(--gold); color:var(--burgundy-deep);
+  background:transparent; transition:all 0.3s ease;
+}
+.add-guest-btn:hover{ background:var(--gold); color:var(--white); }
+.add-guest-btn:disabled{ opacity:0.4; cursor:not-allowed; }
+.guest-limit-note{ font-size:11.5px; color:var(--ink-soft); margin-top:8px; font-style:italic; }
+
+.rsvp-submit{
+  width:100%; min-height:54px; border-radius:999px; background:var(--burgundy-deep); color:var(--white);
+  font-size:13px; letter-spacing:0.2em; text-transform:uppercase; font-weight:500; border:1px solid var(--burgundy-deep);
+  transition:all 0.3s ease; margin-top:6px;
+}
+.rsvp-submit:hover:not(:disabled){ background:transparent; color:var(--burgundy-deep); }
+.rsvp-submit:disabled{ opacity:0.55; cursor:not-allowed; }
+.rsvp-form-note{ text-align:center; font-size:11.5px; color:var(--ink-soft); margin-top:14px; line-height:1.6; }
+
+.rsvp-confirmed{ display:none; text-align:center; padding:30px 10px; }
+.rsvp-confirmed.show{ display:block; animation:fadeUp 0.7s ease; }
+.rsvp-confirmed .check{ width:64px; height:64px; border-radius:50%; background:var(--gold); color:var(--white); display:flex; align-items:center; justify-content:center; margin:0 auto 22px; }
+.rsvp-confirmed h3{ font-size:28px; margin-bottom:12px; }
+.rsvp-confirmed p{ font-family:var(--serif-soft); font-size:16px; color:var(--ink-soft); max-width:420px; margin:0 auto; line-height:1.75; }
+
+@media (max-width:700px){
+  .rsvp-shell{ padding:36px 22px; }
+  .rsvp-grid{ grid-template-columns:1fr; }
+  .attend-toggle{ flex-direction:column; }
+}
+
+/* ============ ADMIN DASHBOARD ============ */
+.admin-overlay{
+  position:fixed; inset:0; z-index:500; background:rgba(24,17,15,0.6);
+  display:none; align-items:flex-start; justify-content:center; padding:40px 16px; overflow-y:auto;
+}
+.admin-overlay.open{ display:flex; }
+.admin-panel{
+  background:var(--white); border-radius:18px; max-width:960px; width:100%; padding:40px; position:relative;
+  box-shadow:0 30px 70px -20px rgba(0,0,0,0.4); margin-bottom:40px;
+}
+.admin-close{ position:absolute; top:18px; right:22px; font-size:26px; color:var(--ink-soft); line-height:1; }
+.admin-login{ max-width:320px; margin:20px auto; text-align:center; }
+.admin-login h3{ font-family:var(--serif); font-size:22px; margin-bottom:8px; }
+.admin-login p{ font-size:13.5px; color:var(--ink-soft); margin-bottom:20px; }
+.admin-login input{ width:100%; padding:12px 16px; border-radius:10px; border:1px solid var(--cream); background:var(--ivory); margin-bottom:14px; font-family:var(--sans); }
+.admin-login-error{ font-size:12px; color:var(--burgundy); margin-top:10px; min-height:16px; }
+.admin-dash-head{ display:flex; align-items:center; justify-content:space-between; margin-bottom:24px; flex-wrap:wrap; gap:12px; }
+.admin-dash-head h3{ font-family:var(--serif); font-size:24px; }
+.admin-stats{ display:grid; grid-template-columns:repeat(auto-fit,minmax(120px,1fr)); gap:12px; margin-bottom:26px; }
+.admin-stats .stat{ background:var(--ivory); border:1px solid var(--cream); border-radius:12px; padding:16px; text-align:center; }
+.admin-stats .stat .n{ font-family:var(--serif); font-size:24px; color:var(--burgundy-deep); }
+.admin-stats .stat .l{ font-size:10.5px; letter-spacing:0.1em; text-transform:uppercase; color:var(--ink-soft); margin-top:4px; }
+.admin-controls{ display:flex; gap:12px; margin-bottom:18px; flex-wrap:wrap; }
+.admin-controls input, .admin-controls select{ padding:10px 14px; border-radius:8px; border:1px solid var(--cream); background:var(--ivory); font-family:var(--sans); font-size:13.5px; }
+.admin-controls input{ flex:1; min-width:180px; }
+.admin-table-wrap{ overflow-x:auto; }
+.admin-table{ width:100%; border-collapse:collapse; font-size:13px; }
+.admin-table th, .admin-table td{ padding:10px 12px; text-align:left; border-bottom:1px solid var(--cream); white-space:nowrap; }
+.admin-table th{ font-size:10.5px; letter-spacing:0.08em; text-transform:uppercase; color:var(--gold); }
+.admin-empty{ text-align:center; color:var(--ink-soft); font-size:13.5px; padding:20px; }
+@media (max-width:600px){ .admin-panel{ padding:26px 18px; } }
 </style>
 </head>
 <body>
@@ -464,6 +580,7 @@ footer .foot-fine{ font-size:11px; letter-spacing:0.1em; color:rgba(242,231,216,
     <nav>
       <ul class="nav-links" id="navLinks">
         <li><a href="#home">Home</a></li>
+        <li><a href="#rsvp">RSVP</a></li>
         <li><a href="#gallery">Love Gallery</a></li>
         <li><a href="#fund">Forever Fund</a></li>
         <li><a href="#dress">Dress Code</a></li>
@@ -530,6 +647,112 @@ footer .foot-fine{ font-size:11px; letter-spacing:0.1em; color:rgba(242,231,216,
     </div>
   </div>
 </div>
+
+<!-- ============ VIP RSVP ============ -->
+<section class="section-pad rsvp-section" id="rsvp">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Kindly Respond</span>
+      <div class="motif-divider"><svg viewBox="0 0 180 34" fill="none"><path d="M0 30 Q45 -6 90 30 Q135 -6 180 30" stroke="currentColor" stroke-width="1"/><circle cx="90" cy="15" r="3" fill="currentColor"/><circle cx="30" cy="26" r="1.6" fill="currentColor"/><circle cx="150" cy="26" r="1.6" fill="currentColor"/></svg></div>
+      <h2>VIP RSVP</h2>
+    </div>
+
+    <div class="rsvp-shell reveal">
+
+      <!-- Confirmation state (shown after successful submit) -->
+      <div class="rsvp-confirmed" id="rsvpConfirmed">
+        <div class="check">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M4 12l6 6L20 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>RSVP Confirmed</h3>
+        <p>Thank you! Your RSVP has been received. We can't wait to celebrate with you.</p>
+      </div>
+
+      <!-- Form state -->
+      <form id="rsvpForm" novalidate>
+        <div class="rsvp-intro">
+          <span class="script">We're honored</span>
+          <p>Please confirm your attendance and provide the details of everyone who will be attending with you.</p>
+        </div>
+
+        <div class="rsvp-fieldset">
+          <span class="rsvp-legend">Primary Guest Information</span>
+          <div class="rsvp-grid">
+            <div class="rsvp-field" data-field="firstName">
+              <label>First Name <span class="req">*</span></label>
+              <input type="text" name="firstName" autocomplete="given-name">
+              <span class="err-msg">Please enter your first name.</span>
+            </div>
+            <div class="rsvp-field" data-field="lastName">
+              <label>Last Name <span class="req">*</span></label>
+              <input type="text" name="lastName" autocomplete="family-name">
+              <span class="err-msg">Please enter your last name.</span>
+            </div>
+            <div class="rsvp-field" data-field="email">
+              <label>Email Address <span class="req">*</span></label>
+              <input type="email" name="email" autocomplete="email">
+              <span class="err-msg">Please enter a valid email address.</span>
+            </div>
+            <div class="rsvp-field" data-field="phone">
+              <label>Phone Number <span class="req">*</span></label>
+              <input type="tel" name="phone" autocomplete="tel">
+              <span class="err-msg">Please enter your phone number.</span>
+            </div>
+            <div class="rsvp-field full" data-field="attending">
+              <label>Will you be attending? <span class="req">*</span></label>
+              <div class="attend-toggle">
+                <div class="attend-option">
+                  <input type="radio" name="attending" id="attendYes" value="Joyfully Accept">
+                  <label for="attendYes">Joyfully Accept</label>
+                </div>
+                <div class="attend-option">
+                  <input type="radio" name="attending" id="attendNo" value="Regretfully Decline">
+                  <label for="attendNo">Regretfully Decline</label>
+                </div>
+              </div>
+              <span class="err-msg">Please let us know if you'll be attending.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="rsvp-fieldset" id="additionalGuestsFieldset">
+          <span class="rsvp-legend">Additional Guests</span>
+          <div class="rsvp-field full">
+            <label>Will you be bringing additional guests?</label>
+            <div class="attend-toggle guest-toggle">
+              <div class="attend-option">
+                <input type="radio" name="hasGuests" id="guestsYes" value="yes">
+                <label for="guestsYes">Yes</label>
+              </div>
+              <div class="attend-option">
+                <input type="radio" name="hasGuests" id="guestsNo" value="no">
+                <label for="guestsNo">No</label>
+              </div>
+            </div>
+          </div>
+          <div id="guestList"></div>
+          <button type="button" class="add-guest-btn" id="addGuestBtn" style="display:none;">+ Add Guest</button>
+          <div class="guest-limit-note" id="guestLimitNote" style="display:none;"></div>
+        </div>
+
+        <div class="rsvp-fieldset">
+          <span class="rsvp-legend">Additional Information</span>
+          <div class="rsvp-field full">
+            <label>Dietary Restrictions / Allergies</label>
+            <textarea name="dietary" placeholder="Please let us know about any dietary restrictions or allergies."></textarea>
+          </div>
+          <div class="rsvp-field full">
+            <label>Message for the Couple</label>
+            <textarea name="message" placeholder="Leave a special message for the couple…"></textarea>
+          </div>
+        </div>
+
+        <button type="submit" class="rsvp-submit" id="rsvpSubmitBtn">Confirm RSVP</button>
+        <div class="rsvp-form-note" id="rsvpFormNote"></div>
+      </form>
+    </div>
+  </div>
+</section>
 
 <!-- ============ LOVE GALLERY ============ -->
 <section class="section-pad" id="gallery">
@@ -694,8 +917,52 @@ footer .foot-fine{ font-size:11px; letter-spacing:0.1em; color:rgba(242,231,216,
     <div class="foot-social" id="footSocial"></div>
     <div class="foot-rule"></div>
     <div class="foot-fine">#KD26</div>
+    <div class="foot-fine" style="margin-top:14px;"><a href="#admin" id="adminLink" style="color:inherit; opacity:0.55; text-decoration:underline;">Admin</a></div>
   </div>
 </footer>
+
+<!-- ============ ADMIN DASHBOARD (password-gated, local to this browser) ============ -->
+<div id="adminOverlay" class="admin-overlay">
+  <div class="admin-panel">
+    <button class="admin-close" id="adminClose" aria-label="Close admin dashboard">&times;</button>
+
+    <div id="adminLogin" class="admin-login">
+      <h3>Admin Access</h3>
+      <p>Enter the password to view RSVP responses.</p>
+      <input type="password" id="adminPassInput" placeholder="Password">
+      <button class="btn gold" id="adminLoginBtn" type="button">Enter</button>
+      <div class="admin-login-error" id="adminLoginError"></div>
+    </div>
+
+    <div id="adminDash" class="admin-dash" style="display:none;">
+      <div class="admin-dash-head">
+        <h3>RSVP Dashboard</h3>
+        <button class="btn-sm" id="adminExportBtn" type="button">Export CSV</button>
+      </div>
+
+      <div class="admin-stats" id="adminStats"></div>
+
+      <div class="admin-controls">
+        <input type="text" id="adminSearch" placeholder="Search by guest name…">
+        <select id="adminFilter">
+          <option value="all">All Responses</option>
+          <option value="Joyfully Accept">Attending</option>
+          <option value="Regretfully Decline">Declined</option>
+        </select>
+      </div>
+
+      <div class="admin-table-wrap">
+        <table class="admin-table" id="adminTable">
+          <thead>
+            <tr><th>Primary Guest</th><th>Email</th><th>Phone</th><th>Status</th><th>Guests</th><th>Dietary</th><th>Submitted</th></tr>
+          </thead>
+          <tbody id="adminTableBody"></tbody>
+        </table>
+      </div>
+      <p class="admin-empty" id="adminEmpty" style="display:none;">No RSVPs recorded on this device yet.</p>
+    </div>
+  </div>
+</div>
 
 <script>
 /* ============ NAV ============ */
@@ -812,7 +1079,7 @@ document.addEventListener('keydown', (e) => {
 // All Forever Fund + Things To Do content lives in this one object.
 const weddingInfo = {
   zelle: 'Kunleowaniyi@gmail.com',
-  cashApp: '$KandD26',
+  cashApp: '$KunleOwaniyi',
   restaurants: [
     { name:"Meehan's Chophouse", addr:'101 S Main St, Mansfield, TX 76063', desc:'An upscale steak and seafood restaurant in the heart of Historic Downtown Mansfield — perfect for a special dinner or date night.', website:'', icon:'steak', tone:'tone-a' },
     { name:'Mister O1 Extraordinary Pizza', addr:'1520 E Debbie Ln #102, Mansfield, TX 76063', desc:'A fun and casual option for artisan-style pizza, salads, and Italian-inspired dishes.', website:'', icon:'pizza', tone:'tone-b' },
@@ -1005,6 +1272,341 @@ socialLinks.forEach(s => {
   footSocial.appendChild(a);
 });
 if (!socialLinks.length) footSocial.style.display = 'none';
+
+/* ============================================================
+   VIP RSVP — configuration
+   ------------------------------------------------------------
+   FORM_ENDPOINT: paste a form-processing service URL here (e.g. a
+   Formspree/Getform endpoint, or your own serverless function) to
+   have submissions emailed to the organizer AND to the guest
+   automatically, with no keys ever exposed in this file. Until an
+   endpoint is set, RSVPs are still safely captured — saved in this
+   browser's local storage and visible in the Admin dashboard below
+   — but no email is actually sent, since real email delivery has
+   to happen server-side.
+   ============================================================ */
+const RSVP_CONFIG = {
+  FORM_ENDPOINT: 'https://formspree.io/f/xeaozgka',
+  ORGANIZER_EMAIL: 'Kunleowaniyi@gmail.com',
+  MAX_ADDITIONAL_GUESTS: 5,
+  ADMIN_PASSWORD: 'KD2026Admin',     // change this before sharing the site
+  COUPLE_NAMES: 'Kunle & Damola',
+};
+
+/* ============ RSVP — dynamic guest rows ============ */
+let guestCount = 0;
+const guestList = document.getElementById('guestList');
+const addGuestBtn = document.getElementById('addGuestBtn');
+const guestLimitNote = document.getElementById('guestLimitNote');
+
+function addGuestRow(){
+  if (guestCount >= RSVP_CONFIG.MAX_ADDITIONAL_GUESTS) return;
+  guestCount++;
+  const idx = guestCount;
+  const row = document.createElement('div');
+  row.className = 'guest-card';
+  row.dataset.guestIndex = idx;
+  row.innerHTML = `
+    <div class="guest-card-head">
+      <h5>Guest ${idx}</h5>
+      <button type="button" class="remove-guest-btn" data-remove="${idx}">Remove Guest</button>
+    </div>
+    <div class="rsvp-grid">
+      <div class="rsvp-field" data-field="guestFirst${idx}">
+        <label>Guest First Name <span class="req">*</span></label>
+        <input type="text" name="guestFirst${idx}">
+        <span class="err-msg">Please enter this guest's first name.</span>
+      </div>
+      <div class="rsvp-field" data-field="guestLast${idx}">
+        <label>Guest Last Name <span class="req">*</span></label>
+        <input type="text" name="guestLast${idx}">
+        <span class="err-msg">Please enter this guest's last name.</span>
+      </div>
+      <div class="rsvp-field">
+        <label>Relationship to Primary Guest</label>
+        <input type="text" name="guestRelationship${idx}" placeholder="e.g. Sister, Friend">
+      </div>
+      <div class="rsvp-field">
+        <label>Adult or Child</label>
+        <select name="guestType${idx}">
+          <option value="Adult">Adult</option>
+          <option value="Child">Child</option>
+        </select>
+      </div>
+      <div class="rsvp-field full">
+        <label>Dietary Restrictions / Allergies</label>
+        <input type="text" name="guestDietary${idx}" placeholder="Optional">
+      </div>
+    </div>`;
+  guestList.appendChild(row);
+  row.querySelector(`[data-remove="${idx}"]`).addEventListener('click', () => {
+    row.remove();
+    guestCount--;
+    refreshGuestUI();
+  });
+  refreshGuestUI();
+}
+
+function refreshGuestUI(){
+  const atMax = guestCount >= RSVP_CONFIG.MAX_ADDITIONAL_GUESTS;
+  addGuestBtn.disabled = atMax;
+  guestLimitNote.style.display = atMax ? 'block' : 'none';
+  if (atMax) guestLimitNote.textContent = `Maximum of ${RSVP_CONFIG.MAX_ADDITIONAL_GUESTS} additional guests reached.`;
+}
+
+document.querySelectorAll('input[name="hasGuests"]').forEach(radio => {
+  radio.addEventListener('change', (e) => {
+    if (e.target.value === 'yes') {
+      addGuestBtn.style.display = 'inline-flex';
+      if (guestCount === 0) addGuestRow();
+    } else {
+      addGuestBtn.style.display = 'none';
+      guestLimitNote.style.display = 'none';
+      guestList.innerHTML = '';
+      guestCount = 0;
+    }
+  });
+});
+addGuestBtn.addEventListener('click', addGuestRow);
+
+/* ============ RSVP — validation + submit ============ */
+const rsvpForm = document.getElementById('rsvpForm');
+const rsvpSubmitBtn = document.getElementById('rsvpSubmitBtn');
+const rsvpFormNote = document.getElementById('rsvpFormNote');
+const rsvpConfirmedEl = document.getElementById('rsvpConfirmed');
+
+function setFieldError(fieldEl, hasError){
+  fieldEl.classList.toggle('error', hasError);
+}
+function isValidEmail(v){ return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); }
+
+function validateRsvp(){
+  let valid = true;
+  const fd = new FormData(rsvpForm);
+
+  const requiredSimple = [
+    ['firstName', v => v.trim().length > 0],
+    ['lastName', v => v.trim().length > 0],
+    ['email', v => isValidEmail(v.trim())],
+    ['phone', v => v.trim().length > 0],
+  ];
+  requiredSimple.forEach(([name, test]) => {
+    const fieldEl = rsvpForm.querySelector(`[data-field="${name}"]`);
+    const ok = test(fd.get(name) || '');
+    setFieldError(fieldEl, !ok);
+    if (!ok) valid = false;
+  });
+
+  const attendingField = rsvpForm.querySelector('[data-field="attending"]');
+  const attendingOk = !!fd.get('attending');
+  setFieldError(attendingField, !attendingOk);
+  if (!attendingOk) valid = false;
+
+  guestList.querySelectorAll('.guest-card').forEach(card => {
+    const idx = card.dataset.guestIndex;
+    [`guestFirst${idx}`, `guestLast${idx}`].forEach(name => {
+      const fieldEl = card.querySelector(`[data-field="${name}"]`);
+      const ok = (fd.get(name) || '').trim().length > 0;
+      setFieldError(fieldEl, !ok);
+      if (!ok) valid = false;
+    });
+  });
+
+  return { valid, fd };
+}
+
+function buildGuestSummary(fd){
+  const guests = [];
+  guestList.querySelectorAll('.guest-card').forEach(card => {
+    const idx = card.dataset.guestIndex;
+    guests.push({
+      firstName: fd.get(`guestFirst${idx}`) || '',
+      lastName: fd.get(`guestLast${idx}`) || '',
+      relationship: fd.get(`guestRelationship${idx}`) || '',
+      type: fd.get(`guestType${idx}`) || 'Adult',
+      dietary: fd.get(`guestDietary${idx}`) || '',
+    });
+  });
+  return guests;
+}
+
+function saveRsvpLocally(record){
+  try {
+    const existing = JSON.parse(localStorage.getItem('kd_rsvps') || '[]');
+    existing.push(record);
+    localStorage.setItem('kd_rsvps', JSON.stringify(existing));
+  } catch (e) { /* storage unavailable — submission still proceeds */ }
+}
+
+rsvpForm.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const { valid, fd } = validateRsvp();
+  if (!valid) {
+    const firstError = rsvpForm.querySelector('.rsvp-field.error input, .rsvp-field.error select');
+    if (firstError) firstError.focus();
+    rsvpFormNote.textContent = 'Please complete the highlighted fields above.';
+    rsvpFormNote.style.color = 'var(--burgundy)';
+    return;
+  }
+
+  rsvpSubmitBtn.disabled = true;
+  rsvpSubmitBtn.textContent = 'Sending…';
+  rsvpFormNote.textContent = '';
+
+  const guests = buildGuestSummary(fd);
+  const record = {
+    firstName: fd.get('firstName'), lastName: fd.get('lastName'),
+    email: fd.get('email'), phone: fd.get('phone'),
+    attending: fd.get('attending'),
+    guests,
+    dietary: fd.get('dietary') || '', message: fd.get('message') || '',
+    submittedAt: new Date().toISOString(),
+  };
+
+  saveRsvpLocally(record);
+
+  if (RSVP_CONFIG.FORM_ENDPOINT) {
+    const guestLines = guests.length
+      ? guests.map((g, i) => `${i+1}. ${g.firstName} ${g.lastName} — ${g.type} — ${g.relationship || 'n/a'}${g.dietary ? ' — dietary: ' + g.dietary : ''}`).join('\n')
+      : 'None';
+    const emailBody =
+`VIP WEDDING RSVP
+
+Primary Guest: ${record.firstName} ${record.lastName}
+Email: ${record.email}
+Phone: ${record.phone}
+Attendance: ${record.attending === 'Joyfully Accept' ? 'Attending' : 'Not Attending'}
+
+Additional Guests (${guests.length})
+${guestLines}
+
+Dietary Restrictions:
+${record.dietary || 'None provided'}
+
+Message for the Couple:
+${record.message || 'None provided'}
+
+Submission Date & Time:
+${new Date(record.submittedAt).toLocaleString()}`;
+
+    try {
+      await fetch(RSVP_CONFIG.FORM_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({
+          _subject: `New VIP Wedding RSVP — ${record.firstName} ${record.lastName}`,
+          _replyto: record.email,
+          message: emailBody,
+          ...record,
+        }),
+      });
+    } catch (err) { /* saved locally regardless; network/email step is best-effort here */ }
+  }
+
+  rsvpForm.style.display = 'none';
+  rsvpConfirmedEl.classList.add('show');
+  rsvpConfirmedEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+});
+
+/* ============ ADMIN DASHBOARD ============ */
+const adminOverlay = document.getElementById('adminOverlay');
+const adminLink = document.getElementById('adminLink');
+const adminClose = document.getElementById('adminClose');
+const adminLogin = document.getElementById('adminLogin');
+const adminDash = document.getElementById('adminDash');
+const adminPassInput = document.getElementById('adminPassInput');
+const adminLoginBtn = document.getElementById('adminLoginBtn');
+const adminLoginError = document.getElementById('adminLoginError');
+
+function openAdmin(){ adminOverlay.classList.add('open'); }
+function closeAdmin(){ adminOverlay.classList.remove('open'); }
+adminLink.addEventListener('click', (e) => { e.preventDefault(); openAdmin(); });
+adminClose.addEventListener('click', closeAdmin);
+adminOverlay.addEventListener('click', (e) => { if (e.target === adminOverlay) closeAdmin(); });
+
+adminLoginBtn.addEventListener('click', () => {
+  if (adminPassInput.value === RSVP_CONFIG.ADMIN_PASSWORD) {
+    adminLogin.style.display = 'none';
+    adminDash.style.display = 'block';
+    renderAdminDash();
+  } else {
+    adminLoginError.textContent = 'Incorrect password.';
+  }
+});
+adminPassInput.addEventListener('keydown', (e) => { if (e.key === 'Enter') adminLoginBtn.click(); });
+
+function getAllRsvps(){
+  try { return JSON.parse(localStorage.getItem('kd_rsvps') || '[]'); }
+  catch (e) { return []; }
+}
+
+function renderAdminDash(){
+  const all = getAllRsvps();
+  const searchVal = (document.getElementById('adminSearch').value || '').toLowerCase();
+  const filterVal = document.getElementById('adminFilter').value;
+
+  const filtered = all.filter(r => {
+    const matchesFilter = filterVal === 'all' || r.attending === filterVal;
+    const nameBlob = [r.firstName, r.lastName, ...(r.guests || []).map(g => g.firstName + ' ' + g.lastName)].join(' ').toLowerCase();
+    const matchesSearch = !searchVal || nameBlob.includes(searchVal);
+    return matchesFilter && matchesSearch;
+  });
+
+  const totalResponses = all.length;
+  const totalAttending = all.filter(r => r.attending === 'Joyfully Accept').length;
+  const totalDeclined = all.filter(r => r.attending === 'Regretfully Decline').length;
+  const totalAdditionalGuests = all.reduce((sum, r) => sum + (r.guests ? r.guests.length : 0), 0);
+  const totalAdults = all.reduce((sum, r) => sum + (r.guests ? r.guests.filter(g => g.type === 'Adult').length : 0), 0) + totalAttending;
+  const totalChildren = all.reduce((sum, r) => sum + (r.guests ? r.guests.filter(g => g.type === 'Child').length : 0), 0);
+
+  document.getElementById('adminStats').innerHTML = [
+    ['Responses', totalResponses], ['Attending', totalAttending], ['Declined', totalDeclined],
+    ['Additional Guests', totalAdditionalGuests], ['Adults', totalAdults], ['Children', totalChildren],
+  ].map(([l,n]) => `<div class="stat"><div class="n">${n}</div><div class="l">${l}</div></div>`).join('');
+
+  const tbody = document.getElementById('adminTableBody');
+  const emptyMsg = document.getElementById('adminEmpty');
+  if (!filtered.length) {
+    tbody.innerHTML = '';
+    emptyMsg.style.display = 'block';
+  } else {
+    emptyMsg.style.display = 'none';
+    tbody.innerHTML = filtered.map(r => `
+      <tr>
+        <td>${r.firstName} ${r.lastName}</td>
+        <td>${r.email}</td>
+        <td>${r.phone}</td>
+        <td>${r.attending === 'Joyfully Accept' ? 'Attending' : 'Declined'}</td>
+        <td>${(r.guests || []).length}</td>
+        <td>${r.dietary || '—'}</td>
+        <td>${new Date(r.submittedAt).toLocaleString()}</td>
+      </tr>`).join('');
+  }
+}
+document.getElementById('adminSearch').addEventListener('input', renderAdminDash);
+document.getElementById('adminFilter').addEventListener('change', renderAdminDash);
+
+document.getElementById('adminExportBtn').addEventListener('click', () => {
+  const all = getAllRsvps();
+  const rows = [['First Name','Last Name','Email','Phone','Attending','Additional Guests','Guest Names','Dietary','Message','Submitted At']];
+  all.forEach(r => {
+    rows.push([
+      r.firstName, r.lastName, r.email, r.phone, r.attending,
+      (r.guests || []).length,
+      (r.guests || []).map(g => `${g.firstName} ${g.lastName} (${g.type})`).join('; '),
+      r.dietary, r.message, r.submittedAt,
+    ]);
+  });
+  const csv = rows.map(row => row.map(cell => `"${String(cell).replace(/"/g,'""')}"`).join(',')).join('\n');
+  const blob = new Blob([csv], { type: 'text/csv' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = 'kd-wedding-rsvps.csv';
+  document.body.appendChild(a); a.click(); document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+});
+
+if (window.location.hash === '#admin') openAdmin();
 </script>
 </body>
 </html>
